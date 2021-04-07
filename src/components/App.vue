@@ -21,7 +21,7 @@ import CalendarDay from './CalendarDay.vue';
 export default {
   data() {
     return {
-      month: 5,
+      month: 4,
       year: 2021,
     };
   },

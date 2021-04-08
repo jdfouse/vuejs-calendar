@@ -5,8 +5,10 @@
     :style="{ top: top, left: left }"
   >
   <h4>Add an event</h4>
+  <p>{{ date.format('dddd, MMM Do') }}</p>
   <div class="text">
-      <input type="text" v-model="description" placeholder="Dinner at Tonga"/>
+      <!-- vue key modifiers-->
+      <input type="text" v-focus v-model="description" placeholder="What to do?" @keyup.enter="create"/>
   </div>
   <div class="buttons">
       <button @click="create">Create</button>
@@ -44,6 +46,16 @@ export default {
     left() {
       return `${this.$store.state.eventFormPosX}px`;
     },
+    date() {
+        return this.$store.state.eventFormDate;
+    }
   },
+  directives: {
+      focus: {
+          update(el) {
+              el.focus();
+          }
+      }
+  }
 };
 </script>

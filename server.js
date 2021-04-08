@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
   let template = fs.readFileSync(path.resolve('./index.html'), 'utf-8');
   let contentMarker = '<!--APP-->';
     if (renderer) {
-    renderer.renderToString({}, (err, html) => {
+      renderer.renderToString({ events }, (err, html) => {
       if (err) {
         console.log(err);
       } else {
@@ -36,7 +36,10 @@ app.get('/', (req, res) => {
 
 app.use(require('body-parser').json());
 app.post('/add_event', (req, res) => {
-  events.push(req.body);
+  events.push({
+    description: req.body.description,
+    date: moment(req.body.date)
+  });
   res.sendStatus(200);
 });
 

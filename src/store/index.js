@@ -4,6 +4,8 @@ import moment from 'moment-timezone';
 moment.tz.setDefault('UTC');
 Vue.use(Vuex);
 
+import Axios from 'axios';
+
 export default new Vuex.Store({
     state: {
         currentYear: 2021,
@@ -33,10 +35,13 @@ export default new Vuex.Store({
             state.eventFormActive = payload;
         },
         addEvent(state, payload) {
-            state.events.push({
+            let obj = {
                 description: payload,
                 date: state.eventFormDate
-            })
+            }
+            state.events.push(obj);
+            Axios.post('/add_event', obj);
+
         },
         eventFormDate(state, payload) {
             state.eventFormDate = payload;

@@ -17,6 +17,7 @@
   </div>
 </template>
 <script>
+
 export default {
     data() {
         return {
@@ -31,7 +32,7 @@ export default {
         create(){
             if (this.description.length > 0 ) {
                 this.$store.dispatch('addEvent', this.description);
-                this.description = '';
+                  this.description = '';
                 this.$store.commit('eventFormActive', false);
             }
         }

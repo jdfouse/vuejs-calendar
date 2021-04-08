@@ -14,9 +14,7 @@ export default new Vuex.Store({
         eventFormPosY: 0,
         eventFormActive: false,
         events: [
-                    { description: 'rando event', date: moment() },
-                    { description: 'rando event 2', date: moment() },
-                    { description: 'rando event 3', date: moment() },
+,
         ],
         eventFormDate: moment()
     },

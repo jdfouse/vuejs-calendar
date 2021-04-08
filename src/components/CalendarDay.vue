@@ -19,12 +19,9 @@ export default {
       };
     },
     events() {
-      let mockData = [
-        { description: 'rando event', date: this.$moment() },
-        { description: 'rando event 2', date: this.$moment() },
-        { description: 'rando event 3', date: this.$moment() },
-      ];
-      return mockData.filter((event) => event.date.isSame(this.day, 'day'));
+      return this.$store.state.events.filter((event) =>
+        event.date.isSame(this.day, 'day')
+      );
     },
   },
   methods: {

@@ -30,6 +30,7 @@ export default {
         x: event.clientX,
         y: event.clientY,
       });
+      this.$store.commit('eventFormDate', this.day);
       this.$store.commit('eventFormActive', true);
     },
   },

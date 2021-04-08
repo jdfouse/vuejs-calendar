@@ -9,9 +9,7 @@ const moment = require('moment-timezone');
 moment.tz.setDefault('UTC');
 const serialize = require('serialize-javascript');
   let events = [
-                    { description: 'rando event', date: moment() },
-                    { description: 'rando event 2', date: moment() },
-                    { description: 'rando event 3', date: moment() }
+    { description: 'Add More Events.', date: moment() },
   ]
 app.use('/public', express.static(path.join(__dirname, 'public')));
 
@@ -35,6 +33,10 @@ if (process.env.NODE_ENV === 'development') {
   const reload = require('reload');
   const reloadServer = reload(app);
   require('./webpack-dev-middleware').init(app);
+  require('./webpack-server-compiler').init(function (bundle) {
+    console.log('Node bundle built');
+  });
+
 }
 
 server.listen(process.env.PORT, function () {

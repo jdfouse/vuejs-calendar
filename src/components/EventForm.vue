@@ -6,7 +6,7 @@
   >
   <h4>Add an event</h4>
   <div class="text">
-      <input type="text" v-model="description" />
+      <input type="text" v-model="description" placeholder="Dinner at Tonga"/>
   </div>
   <div class="buttons">
       <button @click="create">Create</button>
@@ -24,9 +24,14 @@ export default {
     methods: {
         close() {
             this.$store.commit('eventFormActive', false);
+            this.description = '';
         },
         create(){
-            this.$store.commit('addEvent', this.description);
+            if (this.description.length > 0 ) {
+                this.$store.commit('addEvent', this.description);
+                this.description = '';
+                this.$store.commit('eventFormActive', false);
+            }
         }
     },
   computed: {

@@ -8,10 +8,11 @@ const http = require('http');
 const moment = require('moment-timezone');
 moment.tz.setDefault('UTC');
 const serialize = require('serialize-javascript');
-  let events = [
-    { description: 'Add More Events.', date: moment() },
-  ]
 app.use('/public', express.static(path.join(__dirname, 'public')));
+
+let events = [
+    { description: 'Add More Events.', date: moment() },
+]
 
 let renderer;
 
@@ -23,11 +24,12 @@ app.get('/', (req, res) => {
       if (err) {
         console.log(err);
       } else {
-        console.log(html);
+        res.send(template.replace(contentMarker, `<script>var __INITIAL_STATE__=${serialize(events)}</script>\n${html}`));
       }
     })
+    } else {
+      res.send('<p>Awaiting Build</p>');
   }
-  res.send(template.replace(contentMarker, `<script>var __INITIAL_STATE__=${serialize(events)}</script>`));
 });
 
 

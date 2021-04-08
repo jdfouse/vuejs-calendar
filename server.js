@@ -9,9 +9,7 @@ const moment = require('moment-timezone');
 moment.tz.setDefault('UTC');
 const serialize = require('serialize-javascript');
   let events = [
-                    { description: 'rando event', date: moment() },
-                    { description: 'rando event 2', date: moment() },
-                    { description: 'rando event 3', date: moment() }
+    { description: 'Add More Events.', date: moment() },
   ]
 app.use('/public', express.static(path.join(__dirname, 'public')));
 

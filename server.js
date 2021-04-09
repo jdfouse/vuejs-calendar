@@ -13,7 +13,10 @@ app.use('/public', express.static(path.join(__dirname, 'public')));
 
 
 let events = [
-    { description: 'Add More Events.', date: moment() },
+  { description: 'To do: Offline', date: moment() },
+  { description: 'To do: Edit, Delete', date: moment() },
+  { description: 'To do: Data Store', date: moment() },
+  { description: 'To do: Users', date: moment() },
 ]
 
 
